@@ -41,6 +41,13 @@ unittest5: dominion.o unittest5.c
 	gcc -o unittest5 unittest5.c dominion.o rngs.o -g $(CFLAGS)
 
 unittestresults: unittest1 unittest2 unittest3 unittest4 unittest5
+	./unittest1 -> unittestresults.out
+	./unittest2 >> unittestresults.out
+	./unittest3 >> unittestresults.out
+	./unittest4 >> unittestresults.out
+	./unittest5 >> unittestresults.out
+
+# !!!! Still needs to output the results from gcov !!!!
 
 cleanunittests:
 	rm unittest[1-9]
@@ -48,5 +55,5 @@ cleanunittests:
 
 all: playdom player 
 
-clean: cleanunittests
+clean:
 	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe
