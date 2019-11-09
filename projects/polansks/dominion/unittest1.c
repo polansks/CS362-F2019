@@ -54,18 +54,7 @@ int main()
 		   state should change because invalid options were chosen */
 		ASSERT(returnValue == -1);
 		
-		ASSERT(memcmp(&gameBefore, &gameAfter, sizeof(struct gameState)) == 0); // HOW DO WE USE MEMCMP??
-
-		// check hand counts stayed the same
-		ASSERT(gameBefore.handCount[0] == gameAfter.handCount[0]);
-		ASSERT(gameBefore.handCount[1] == gameAfter.handCount[1]);
-		
-		// check supply count stayed the same
-		ASSERT(gameBefore.supplyCount[gameBefore.hand[currentPlayer][choice1]] == gameAfter.supplyCount[gameAfter.hand[currentPlayer][choice1]]);
-		
-		// check revealed card went up for other player
-		// check discard pile
-		// check trashed cards
+		ASSERT(memcmp(&gameBefore, &gameAfter, sizeof(struct gameState)) == 0); /* the game state shouldn't have changed because we tried to play the card in an invalid way */
 	}
 
 	printf("Testing invalid choice2 value of 3\n");
@@ -83,14 +72,7 @@ int main()
 		   state should change because invalid options were chosen */
 		ASSERT(returnValue == -1);
 		
-		ASSERT(memcmp(&gameBefore, &gameAfter, sizeof(struct gameState)) == 0); // HOW DO WE USE MEMCMP??
-
-		// check hand counts stayed the same
-		ASSERT(gameBefore.handCount[0] == gameAfter.handCount[0]);
-		ASSERT(gameBefore.handCount[1] == gameAfter.handCount[1]);
-		
-		// check supply count stayed the same
-		ASSERT(gameBefore.supplyCount[gameBefore.hand[currentPlayer][choice1]] == gameAfter.supplyCount[gameAfter.hand[currentPlayer][choice1]]);
+		ASSERT(memcmp(&gameBefore, &gameAfter, sizeof(struct gameState)) == 0); /* the game state shouldn't have changed because we tried to play the card in an invalid way */
 	}
 
 	printf("Testing valid option for choice1 and choice2\n");

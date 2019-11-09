@@ -46,7 +46,8 @@ unittestresults: unittest1 unittest2 unittest3 unittest4 unittest5
 	gcov dominion.c -b -f | grep -h "playAmbassador" -A 2 >> unittestresults.out
 	echo "" >> unittestresults.out
 	./unittest2 >> unittestresults.out
-	gcov dominion.c -b -f | grep -h "playMinion" -A 2 >> unittestresults.out
+	echo "" >> unittestresults.out
+	gcov dominion.c -b -f | grep -h "playMine" -A 2 >> unittestresults.out
 	./unittest3 >> unittestresults.out
 	./unittest4 >> unittestresults.out
 	./unittest5 >> unittestresults.out

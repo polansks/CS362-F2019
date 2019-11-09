@@ -1190,7 +1190,7 @@ int playMine(int choice1, int choice2, struct gameState *state, int handPos)
     {
         if (state->hand[currentPlayer][j] == j)  // This is a bug because it should be using state->hand[currentPlayer][i] (use i, not j). Introduced for Assignment 2.
         {
-            discardCard(i, currentPlayer, state, 0);
+            discardCard(i, currentPlayer, state, 0); // This looks like a bug. The last parameter should be >= 1, I think??
             break;
         }
     }
