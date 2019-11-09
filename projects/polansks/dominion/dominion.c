@@ -1330,12 +1330,12 @@ int validateAmbassadorChoices(int choice1, int choice2, struct gameState *state,
     int i;
     for (i = 0; i < state->handCount[currentPlayer]; i++)
     {
-        if (i != handPos && i == state->hand[currentPlayer][choice1] && i != choice1)
+        if (i != handPos && state->hand[currentPlayer][i] == state->hand[currentPlayer][choice1] && i != choice1)
         {
             j++;
         }
     }
-    if (j < choice2)
+    if (j > choice2)
     {
         return 0;
     }
