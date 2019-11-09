@@ -36,8 +36,8 @@ int main()
 	initializeGameState(&gameBase);
 
 	currentPlayer = 0;
-	gameBase.hand[currentPlayer][handPos] = mine; /* set the card being played to be a miner */
-	gameBase.whoseTurn = currentPlayer; // also set whose turn to be player 2
+	gameBase.hand[currentPlayer][handPos] = mine; /* set the card being played to be a mine */
+	gameBase.whoseTurn = currentPlayer; // also set whose turn to be player 1
 
 
 	printf("Testing invalid value for choice1 - trashing a Duchy card instead of a Treasure card\n");
