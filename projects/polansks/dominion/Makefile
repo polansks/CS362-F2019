@@ -58,6 +58,9 @@ unittestresults: unittest1 unittest2 unittest3 unittest4 unittest5
 	gcov dominion.c -b -f | grep -h "playTribute" -A 2 >> unittestresults.out
 	echo "" >> unittestresults.out
 	./unittest5 >> unittestresults.out
+	echo "" >> unittestresults.out
+	gcov dominion.c -b -f | grep -h "playBaron" -A 2 >> unittestresults.out
+	echo "" >> unittestresults.out
 
 # !!!! Still needs to output the results from gcov !!!!
 
