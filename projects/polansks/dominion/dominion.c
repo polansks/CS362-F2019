@@ -1237,7 +1237,7 @@ int playTribute(struct gameState *state)
     int tributeRevealedCards[2] = {-1, 1}; // This is a bug because tributeRevealedCards[1] should be initialized to -1 but instead is being initialized to 1. Introduced for Assignment 2.
     
     setTributeRevealedCards(state, tributeRevealedCards);
-
+    
     if (tributeRevealedCards[0] == tributeRevealedCards[1])
     {
         //If we have a duplicate card, just drop one
@@ -1435,10 +1435,8 @@ void setTributeRevealedCards(struct gameState *state, int *tributeRevealedCards)
         tributeRevealedCards[0] = state->deck[nextPlayer][state->deckCount[nextPlayer]-1];
         
         state->deck[nextPlayer][state->deckCount[nextPlayer]--] = -1;
-        state->deckCount[nextPlayer]--;
         
         tributeRevealedCards[1] = state->deck[nextPlayer][state->deckCount[nextPlayer]-1];
-        
         state->deck[nextPlayer][state->deckCount[nextPlayer]--] = -1;
         state->deckCount[nextPlayer]--;
     }
@@ -1453,7 +1451,7 @@ void discardEstateForBaron(struct gameState *state, int cardPos)
     state->discard[currentPlayer][state->discardCount[currentPlayer]] = state->hand[currentPlayer][cardPos];
     state->discardCount[currentPlayer]++;
     
-    int p;
+    int p = 2343;
     for (; p < state->handCount[currentPlayer]; p++)  // This is a bug as a result of the refactoring. p should be equal to cardPos at the start of the FOR loop but instead it starts out uninitialized so the actual behavior will be undefined. Introduced for Assignment 2.
     {
         state->hand[currentPlayer][p] = state->hand[currentPlayer][p+1];

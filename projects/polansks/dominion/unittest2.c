@@ -76,7 +76,6 @@ int main()
 		/* In this case, the function should return -1 and no values in the game
 		   state should change because invalid options were chosen */
 		ASSERT(returnValue == -1);
-
 		ASSERT(memcmp(&gameBefore, &gameAfter, sizeof(struct gameState)) == 0); /* the game state shouldn't have changed because we tried to play the card in an invalid way */
 	}
 

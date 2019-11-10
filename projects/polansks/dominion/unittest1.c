@@ -91,6 +91,7 @@ int main()
 		/* Use asserts to check that the function has worked properly */
 		ASSERT(returnValue == 0);
 		ASSERT(gameBefore.handCount[currentPlayer] - 1 - choice2 == gameAfter.handCount[currentPlayer]);
+		ASSERT(gameBefore.playedCardCount == gameAfter.playedCardCount);
 		ASSERT(gameBefore.handCount[otherPlayer] + 1 == gameAfter.handCount[otherPlayer]);
 	}
 

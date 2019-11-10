@@ -65,6 +65,7 @@ int main()
 		ASSERT(returnValue == 0);
 		ASSERT(gameAfter.handCount[currentPlayer] == 4);
 		ASSERT(memcmp(gameAfter.hand[otherPlayer], gameBefore.hand[otherPlayer], sizeof(int) * MAX_HAND) != 0);
+		ASSERT(gameAfter.deckCount[currentPlayer] == gameBefore.deckCount[currentPlayer] - 4);
 	}
 
 	printf("Testing option of redrawing hand and other player has 4 cards\n");
@@ -82,6 +83,7 @@ int main()
 		ASSERT(returnValue == 0);
 		ASSERT(gameAfter.handCount[currentPlayer] == 4);
 		ASSERT(memcmp(gameAfter.hand[otherPlayer], gameBefore.hand[otherPlayer], sizeof(int) * MAX_HAND) == 0);
+		ASSERT(gameAfter.deckCount[currentPlayer] == gameBefore.deckCount[currentPlayer] - 4);
 	}
 
 

@@ -104,6 +104,22 @@ int main()
 		ASSERT(gameAfter.handCount[currentPlayer] == gameBefore.handCount[currentPlayer]);
 	}
 
+	printf("Testing reveal 2 cards from deck: two victory cards\n");
+	{
+		memcpy(&gameBefore, &gameBase, sizeof(struct gameState));
+
+		/* for the next player, set the next two cards in the deck to be action cards */
+		gameBefore.deck[nextPlayer][gameBefore.deckCount[nextPlayer] - 1] = great_hall;
+		gameBefore.deck[nextPlayer][gameBefore.deckCount[nextPlayer] - 2] = estate;
+
+		memcpy(&gameAfter, &gameBefore, sizeof(struct gameState));
+
+		playTribute(&gameAfter);
+
+		ASSERT(gameAfter.deckCount[nextPlayer] = gameBefore.deckCount[nextPlayer] + 2);
+		ASSERT(gameAfter.handCount[currentPlayer] == gameBefore.handCount[currentPlayer] + 4);
+	}
+
 	return 0;
 }
 
