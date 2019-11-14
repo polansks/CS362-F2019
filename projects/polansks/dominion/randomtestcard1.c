@@ -75,7 +75,7 @@ int randomInteger(int low, int high)
 
 void checkAssertions(int trialNumber, BOOL discardedEstate, int returnValue, struct gameState *before, struct gameState *after)
 {
-	printf("----Trial #%d-------\n", trialNumber, discardedEstate);
+	printf("----Trial #%d-------\n", trialNumber);
 
 	if (returnValue == -1)
 	{
