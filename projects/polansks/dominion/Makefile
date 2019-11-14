@@ -33,11 +33,11 @@ randomtestresults: randomtestcard1 randomtestcard2 randomtestcard3
 	./randomtestcard2 >> randomtestresults.out
 	echo "" >> randomtestresults.out
 	gcov dominion.c -b -f | grep -h "playMinion" -A 2 >> randomtestresults.out
-	#echo "" >> randomtestresults.out
-	#./randomtestcard3 >> randomtestresults.out
-	#echo "" >> randomtestresults.out
-	#gcov dominion.c -b -f | grep -h "playTribute" -A 2 >> randomtestresults.out
-	#echo "" >> randomtestresults.out
+	echo "" >> randomtestresults.out
+	./randomtestcard3 >> randomtestresults.out
+	echo "" >> randomtestresults.out
+	gcov dominion.c -b -f | grep -h "playTribute" -A 2 >> randomtestresults.out
+	echo "" >> randomtestresults.out
 
 randomtestcard1: randomtestcard1.c dominion.o rngs.o
 	gcc -o randomtestcard1 randomtestcard1.c dominion.o rngs.o -g -O0 $(CFLAGS)
@@ -46,7 +46,7 @@ randomtestcard2: randomtestcard2.c dominion.o rngs.o
 	gcc -o randomtestcard2 randomtestcard2.c -g -O0 dominion.o rngs.o $(CFLAGS)
 
 randomtestcard3: randomtestcard3.c dominion.o rngs.o
-	#gcc -o randomtestcard3 randomtestcard3.c -g -O0 dominion.o rngs.o $(CFLAGS)
+	gcc -o randomtestcard3 randomtestcard3.c -g -O0 dominion.o rngs.o $(CFLAGS)
 
 all: playdom player 
 

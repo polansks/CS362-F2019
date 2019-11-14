@@ -1393,7 +1393,7 @@ int isVictoryCard(int card)
 
 void setTributeRevealedCards(struct gameState *state, int *tributeRevealedCards)
 {
-    int nextPlayer = whoseTurn(state) + 1;
+    int nextPlayer = whoseTurn(state) + 1 >= state->numPlayers ? 0 : whoseTurn(state) + 1;
     
     if ((state->discardCount[nextPlayer] + state->deckCount[nextPlayer]) <= 1)
     {
