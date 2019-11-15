@@ -39,6 +39,9 @@ int main(int argc, char** argv)
 		int choice1 = randomInteger(0, 1); /* if this is 0, then an Estate has not been discarded and the player gains an Estate */
 
 		initializeGameState(&stateBefore);
+
+		stateBefore.hand[whoseTurn(&stateBefore)][0] = baron; /* assign a baron to the fist card in the player's hand */
+
 		memcpy(&stateAfter, &stateBefore, sizeof(struct gameState));
 
 		int returnValue = playBaron(choice1, &stateAfter);
@@ -103,7 +106,7 @@ void checkAssertions(int trialNumber, BOOL discardedEstate, int returnValue, str
 		if (before->supplyCount[estate] > 0)
 		{
 			ASSERT(cardCount(after, player, estate) == cardCount(before, player, estate) + 1); // 1 more estate
-			ASSERT(after->handCount[player] == before->handCount[player] - 1);
+			ASSERT(after->handCount[player] == before->handCount[player]);
 			ASSERT(after->supplyCount[estate] == before->supplyCount[estate] - 1);
 		}
 	}

@@ -14,6 +14,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3,
 
 int isTreasureCard(int card);
 int isVictoryCard(int card);
+int isActionCard(int card);
 
 // Ambassador functions
 int playAmbassador(int choice1, int choice2, struct gameState *state, int handPos);

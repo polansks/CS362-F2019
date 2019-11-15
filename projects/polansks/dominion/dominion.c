@@ -1258,7 +1258,7 @@ int playTribute(struct gameState *state)
             drawCard(currentPlayer, state);
             drawCard(currentPlayer, state);
         }
-        else //Action Card
+        else if (isActionCard(tributeRevealedCards[i]))//Action Card
         {
             state->numActions = state->numActions + 2;
         }
@@ -1389,6 +1389,11 @@ int isTreasureCard(int card)
 int isVictoryCard(int card)
 {
     return (card == estate || card == duchy || card == province || card == gardens);  // This is a bug because great_hall should also return TRUE but it has been left out. Introduced for Assignment 2.
+}
+
+int isActionCard(int card)
+{
+    return !isTreasureCard(card) && !isVictoryCard(card);
 }
 
 void setTributeRevealedCards(struct gameState *state, int *tributeRevealedCards)

@@ -65,6 +65,14 @@ void initializeGameState(struct gameState *g)
 
 	initializeGame(numPlayers, kingdomCards, randomSeed, g);
 
+	int i;
+	for (i = 0; i < numPlayers; i++)
+	{
+		if (i != whoseTurn(g))
+		{
+			g->handCount[i] = randomInteger(2, MAX_HAND);
+		}
+	}
 	return;
 }
 
@@ -81,13 +89,12 @@ void checkAssertions(int trialNumber, int choice1, int returnValue, struct gameS
 
 	int player = whoseTurn(before);
 
-	ASSERT(cardCount(after, player, baron) == cardCount(before, player, baron) - 1); // 1 fewer baron
 	ASSERT(after->numActions == before->numActions + 1);
 
 	if (choice1)
 	{
 		/* If chose +2 coins, check that coins went up, hand count went down by one (for the discard) */
-		ASSERT(after->handCount[player] == before->handCount[player] + 1);
+		ASSERT(after->handCount[player] == before->handCount[player] - 1);
 		ASSERT(cardCount(after, player, minion) == cardCount(after, player, minion) - 1);
 		ASSERT(after->coins == before->coins + 2);
 	}
