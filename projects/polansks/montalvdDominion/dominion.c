@@ -742,7 +742,7 @@ int baronEffect(int choice1, struct gameState *state, int currentPlayer) {
 
 //Helper function for the minionEffect function
 void discardDraw(int player, struct gameState *state, int handPos){
-	while(numHandCards(state) >0){
+	while(state->handCount[player] >0){
 		discardCard(handPos, player, state, 0);
 	}
 	for (int i = 0; i < 4; i++){
@@ -751,13 +751,15 @@ void discardDraw(int player, struct gameState *state, int handPos){
 }
 
 //Function for the minion card
-int minionEffect(int handPos, struct gameState *state, int currentPlayer, int choice2, int choice1){
+int minionEffect(int handPos, struct gameState *state, int currentPlayer, int choice2, int choice1)
+{
         //+1 action
         state->numActions++;
 	int i;
        	if (choice1)
         {
             state->coins = state->coins + 2;
+            discardCard(handPos, currentPlayer, state, 0);
         }
         else if (choice2)	//discard hand, redraw 4, other players with 5+ cards discard hand and draw 4
         {
@@ -779,14 +781,15 @@ int minionEffect(int handPos, struct gameState *state, int currentPlayer, int ch
 
         }
 	 //discard card from hand
-        discardCard(handPos, currentPlayer, state, 0);
+        //discardCard(handPos, currentPlayer, state, 0);
 
 
         return 0;
 }
 
 //function for the ambassador card
-    int ambassadorEffect(struct gameState *state, int choice1, int choice2, int handPos, int currentPlayer){ 
+int ambassadorEffect(struct gameState *state, int choice1, int choice2, int handPos, int currentPlayer)
+{ 
         int numCard = 0;		//used to check if player has enough cards to discard
 	int i;
 	int j;
@@ -847,7 +850,8 @@ int minionEffect(int handPos, struct gameState *state, int currentPlayer, int ch
 }
 
 //function for the tribute card
-int tributeEffect(struct gameState *state, int currentPlayer, int nextPlayer){ 
+int tributeEffect(struct gameState *state, int currentPlayer, int nextPlayer)
+{ 
 	   // tributeRevealedCards[0] = -1;
 	   // tributeRevealedCards[1] = -1;
             int i;
@@ -921,7 +925,8 @@ void findDiscard(int currentPlayer, struct gameState *state, int j) {
         }
 }
 //function for the mine card
-int mineEffect(struct gameState *state, int choice1, int choice2, int currentPlayer, int handPos){
+int mineEffect(struct gameState *state, int choice1, int choice2, int currentPlayer, int handPos)
+{
         int j = state->hand[currentPlayer][choice2];  //store card we will trash
         if (state->hand[currentPlayer][choice1] < copper || state->hand[currentPlayer][choice1] > gold)
         {
@@ -1396,5 +1401,13 @@ int updateCoins(int player, struct gameState *state, int bonus)
     return 0;
 }
 
+int isTreasureCard(int card)
+{
+    return (card == copper || card == silver || card == gold);
+}
 
+int isVictoryCard(int card)
+{
+    return (card == estate || card == duchy || card == province || card == gardens || card == great_hall);
+}
 //end of dominion.c
