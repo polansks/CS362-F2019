@@ -30,7 +30,7 @@ all: playdom player
 clean:
 	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe
 
-unittestresults: unittest5 unittest7 unittest8
+unittestresults: unittest5 unittest7 unittest8 unittest9 unittest10
 	@echo "Running unit tests..."
 	@echo "Unit Test 5" > unittestresults.out
 	@./unittest5 >> unittestresults.out
@@ -38,6 +38,10 @@ unittestresults: unittest5 unittest7 unittest8
 	@./unittest7 >> unittestresults.out
 	@echo "Unit Test 8" >> unittestresults.out
 	@./unittest8 >>  unittestresults.out
+	@echo "Unit Test 9" >> unittestresults.out
+	@./unittest9 >>  unittestresults.out
+	@echo "Unit Test 10" >> unittestresults.out
+	@./unittest10 >>  unittestresults.out
 	@echo "Unit tests complete"
 
 unittest5: dominion.o rngs.o unittest5.c
@@ -48,3 +52,9 @@ unittest7: dominion.o rngs.o unittest7.c
 
 unittest8: dominion.o rngs.o unittest8.c
 	gcc -o unittest8 unittest8.c -g dominion.o rngs.o $(CFLAGS)
+
+unittest9: dominion.o rngs.o unittest9.c
+	gcc -o unittest9 unittest9.c -g dominion.o rngs.o $(CFLAGS)
+
+unittest10: dominion.o rngs.o unittest10.c
+	gcc -o unittest10 unittest10.c -g dominion.o rngs.o $(CFLAGS)
