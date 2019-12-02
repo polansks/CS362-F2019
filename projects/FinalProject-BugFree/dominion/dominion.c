@@ -1077,7 +1077,12 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
                 drawCard(currentPlayer, state);
                 drawCard(currentPlayer, state);
             }
-            else { //Action Card
+            // fix for bug #9: add if-else condition to check for duplicate card
+			else if (tributeRevealedCards[i] == -1) {
+				// second card is duplicate or we have hit the end so break out of the loop
+				break;
+			}
+			else { //Action Card
                 state->numActions = state->numActions + 2;
             }
         }
@@ -1098,8 +1103,8 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
         }
 
         for (i = 0; i < state->handCount[currentPlayer]; i++)
-        {
-            if (i != handPos && i == state->hand[currentPlayer][choice1] && i != choice1)
+        {   // fix for bug #10
+            if (i != handPos && state->hand[currentPlayer][i] == state->hand[currentPlayer][choice1] && i != choice1)
             {
                 j++;
             }
