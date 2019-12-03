@@ -40,6 +40,6 @@ int main(){
     int choice1 = 2;
     int bonus = -1;
     cardEffect(remodel, choice1, copper, -1, &G, 0, &bonus);
-    assert(G.playedCardCount == 1 ); 
+    assert(G.playedCardCount == 2 ); 
     return 0;
 }

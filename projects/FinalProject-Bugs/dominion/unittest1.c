@@ -24,9 +24,8 @@ int main(){
     printf ("\n------------------------TESTING FOR CORRECT TRASHING-----------------\n");
 	int numPlayer = 2;
 	int seed = 23;
-	int r;
     memset(&G, 23, sizeof(struct gameState));
-    r = initializeGame(numPlayer, k, seed, &G);
+    initializeGame(numPlayer, k, seed, &G);
     int p = 0;
     G.coins = 0;
     G.playedCardCount = 0;	
