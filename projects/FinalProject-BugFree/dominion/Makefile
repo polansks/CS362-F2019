@@ -30,8 +30,28 @@ all: playdom player
 clean:
 	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe
 
-unittestresults: unittest5 unittest7 unittest8 unittest9 unittest10
+unittestresults: unittest1 unittest2 unittest3 unittest4 unittest5 unittest7 unittest8 unittest9 unittest10 
 	@echo "Running unit tests..."
+	@echo "Unit Test 1" > unittestresults.out
+	@./unittest1 >> unittestresults.out
+	@echo -e "\nCoverage Results:" >> unittestresults.out
+	@gcov dominion.c -b -f | grep -h "discardCard" -A 2 >> unittestresults.out
+	@rm dominion.gcda
+	@echo "Unit Test 2" > unittestresults.out
+	@./unittest2 >> unittestresults.out
+	@echo -e "\nCoverage Results:" >> unittestresults.out
+	@gcov dominion.c -b -f | grep -h "discardCard" -A 2 >> unittestresults.out
+	@rm dominion.gcda
+	@echo "Unit Test 3" > unittestresults.out
+	@./unittest3 >> unittestresults.out
+	@echo -e "\nCoverage Results:" >> unittestresults.out
+	@gcov dominion.c -b -f | grep -h "cardEffect" -A 2 >> unittestresults.out
+	@rm dominion.gcda	
+	@echo "Unit Test 4" > unittestresults.out
+	@./unittest4 >> unittestresults.out
+	@echo -e "\nCoverage Results:" >> unittestresults.out
+	@gcov dominion.c -b -f | grep -h "cardEffect" -A 2 >> unittestresults.out
+	@rm dominion.gcda	
 	@echo "Unit Test 5" > unittestresults.out
 	@./unittest5 >> unittestresults.out
 	@echo -e "\nCoverage Results:" >> unittestresults.out
@@ -58,6 +78,18 @@ unittestresults: unittest5 unittest7 unittest8 unittest9 unittest10
 	@gcov dominion.c -b -f | grep -h "scoreFor" -A 2 >> unittestresults.out
 	@rm dominion.gcda
 	@echo "Unit tests complete"
+
+unittest1: dominion.o rngs.o unittest1.c
+	gcc -o unittest1 unittest1.c -g dominion.o rngs.o $(CFLAGS)
+
+unittest2: dominion.o rngs.o unittest2.c
+	gcc -o unittest2 unittest2.c -g dominion.o rngs.o $(CFLAGS)
+
+unittest3: dominion.o rngs.o unittest3.c
+	gcc -o unittest3 unittest3.c -g dominion.o rngs.o $(CFLAGS)
+
+unittest4: dominion.o rngs.o unittest4.c
+	gcc -o unittest4 unittest4.c -g dominion.o rngs.o $(CFLAGS)
 
 unittest5: dominion.o rngs.o unittest5.c
 	gcc -o unittest5 unittest5.c -g dominion.o rngs.o $(CFLAGS)
