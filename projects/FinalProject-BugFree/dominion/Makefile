@@ -34,27 +34,27 @@ unittestresults: unittest5 unittest7 unittest8 unittest9 unittest10
 	@echo "Running unit tests..."
 	@echo "Unit Test 5" > unittestresults.out
 	@./unittest5 >> unittestresults.out
-	@echo "\nCoverage Results:" >> unittestresults.out
+	@echo -e "\nCoverage Results:" >> unittestresults.out
 	@gcov dominion.c -b -f | grep -h "scoreFor" -A 2 >> unittestresults.out
 	@rm dominion.gcda
-	@echo "\nUnit Test 7" >> unittestresults.out
+	@echo -e "\nUnit Test 7" >> unittestresults.out
 	@./unittest7 >> unittestresults.out
-	@echo "\nCoverage Results:" >> unittestresults.out
+	@echo -e "\nCoverage Results:" >> unittestresults.out
 	@gcov dominion.c -b -f | grep -h "cardEffect" -A 2 >> unittestresults.out
 	@rm dominion.gcda
-	@echo "\nUnit Test 8" >> unittestresults.out
+	@echo -e "\nUnit Test 8" >> unittestresults.out
 	@./unittest8 >>  unittestresults.out
-	@echo "\nCoverage Results:" >> unittestresults.out
+	@echo -e "\nCoverage Results:" >> unittestresults.out
 	@gcov dominion.c -b -f | grep -h "playCard" -A 2 >> unittestresults.out
 	@rm dominion.gcda
-	@echo "\nUnit Test 9" >> unittestresults.out
+	@echo -e "\nUnit Test 9" >> unittestresults.out
 	@./unittest9 >>  unittestresults.out
-	@echo "\nCoverage Results:" >> unittestresults.out
+	@echo -e "\nCoverage Results:" >> unittestresults.out
 	@gcov dominion.c -b -f | grep -h "cardEffect" -A 2 >> unittestresults.out
 	@rm dominion.gcda
-	@echo "\nUnit Test 10" >> unittestresults.out
+	@echo -e "\nUnit Test 10" >> unittestresults.out
 	@./unittest10 >>  unittestresults.out
-	@echo "\nCoverage Results:" >> unittestresults.out
+	@echo -e "\nCoverage Results:" >> unittestresults.out
 	@gcov dominion.c -b -f | grep -h "scoreFor" -A 2 >> unittestresults.out
 	@rm dominion.gcda
 	@echo "Unit tests complete"
