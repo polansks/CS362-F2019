@@ -93,8 +93,12 @@ int main()
 
 		memcpy(&g1, &G, sizeof(struct gameState));
 
+		updateCoins(whoseTurn(&G), &G, bonus);
+
 		p = cardEffect(card, choice1, choice2, choice3, &G, handPos, &bonus); 
 
+		updateCoins(whoseTurn(&G), &G, bonus);
+		
 		if (p >= 0) {
 
 			printf("\n------------ TEST SCENARIO: TWO COPPERS REVEALED ------------\n");
