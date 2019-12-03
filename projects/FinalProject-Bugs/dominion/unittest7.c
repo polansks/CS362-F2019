@@ -47,6 +47,7 @@ int main(int argc, char** argv)
 
 	ASSERT(stateBefore.coins + 2 == stateAfter.coins);
 	ASSERT(stateBefore.numActions + 2 == stateAfter.numActions);
+	ASSERT(stateBefore.handCount[currentPlayer] == stateAfter.handCount[currentPlayer]);
 
 
 	return 0;
